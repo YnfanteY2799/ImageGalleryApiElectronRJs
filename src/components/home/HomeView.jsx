@@ -1,32 +1,38 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import CustomNavBar from "../home/CustomNavBar";
-
+import { DeveloperView, ToolsView, ProjectView } from "../about/AboutView";
+// import ResetView from "../reset/ResetView";
+import LogInView from "../log-in/LogInView";
+import SigInView from "../log-in/SignInView";
 
 const HomeView = () => {
 
 
     const routes = [
-        
-        {name:"Log-in", type:"normal", link:"/Login"},
-        
-        {name:"Sing-Up", type:"normal", link:"/SingUp"},
+        {name:"Log-in", type:"normal", link:"/Login", component:LogInView },
+        {name:"Sing-Up", type:"normal", link:"/SingUp", component:SigInView},
         
         {name:"About", type:"options", link:"", opts:[
-            {name:"Developer", link:"/Login"},
-            {name:"Project", link:"/Login"},
-            {name:"Tools - Used", link:"/Login"}
+            
+            {name:"Developer", link:"/About/Developer", component:DeveloperView},
+            
+            {name:"Project", link:"/About/Project", component:ProjectView},
+            
+            {name:"Tools - Used", link:"/About/Tools", component:ToolsView}
+
         ]},
 
     ], titulo = "AniGallery";
 
     return(
-        <div>
-            <CustomNavBar 
-            routes = {routes}
-            title = {titulo}
-            />
-
-
-        </div>
+        <Router>
+            <div>
+                <CustomNavBar 
+                routes = {routes}
+                title = {titulo}
+                />
+            </div>
+        </Router>
     );
 
 

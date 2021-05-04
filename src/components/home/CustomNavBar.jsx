@@ -1,8 +1,15 @@
 import { useState } from "react";
-
+import { Route } from "react-router-dom";
 
 const OptNavBar = ({ routes }) => routes.map( (opt, idx) =>
- (<li key={ idx } className="nav-item"> <a className="nav-link" href={opt.link}> { opt.name } </a> </li>)
+ (
+ <div className="nav-item">
+    <Route key={ idx } className="nav-link" path={ opt.link } component={opt.component} exact> 
+        { opt.name }
+        {/* <a className="nav-link" href={opt.link}> { opt.name } </a>  */}
+    </Route>
+ </div>
+ )
 );
 
 
@@ -19,7 +26,7 @@ const CustomNavBar = ( { routes, title } ) =>{
             
             <div className="container-fluid">
                 
-                <a className="navbar-brand" href="#/">{title}</a>
+                <a className="navbar-brand" href="/">{title}</a>
                 
                 <button className="navbar-toggler" onClick={ () => setOpenBurguer(!openBurguer)}
                 type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
@@ -52,6 +59,7 @@ const CustomNavBar = ( { routes, title } ) =>{
                             </ul>
 
                         </li>
+                    
                     </ul>
                     
                     <div className="d-flex">
