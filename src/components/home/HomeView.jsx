@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import CustomNavBar from "../home/CustomNavBar";
 import { DeveloperView, ToolsView, ProjectView } from "../about/AboutView";
-// import ResetView from "../reset/ResetView";
+import ResetView from "../reset/ResetView";
 import LogInView from "../log-in/LogInView";
 import SigInView from "../log-in/SignInView";
 
@@ -18,7 +18,9 @@ const HomeView = () => {
             
             {name:"Project", link:"/About/Project", component:ProjectView},
             
-            {name:"Tools - Used", link:"/About/Tools", component:ToolsView}
+            {name:"Tools - Used", link:"/About/Tools", component:ToolsView},
+
+            {name:"Reset User", link:"/About/Reset", component:ResetView},
 
         ]},
 
