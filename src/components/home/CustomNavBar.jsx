@@ -21,8 +21,14 @@ const CustomNavBar = ( { routes } ) =>{
     const [ openOptions1, setOpenOptions1 ] = useState(false);
     const [ search, setSearch] = useState("");
 
+
+    var idClosser = ( event ) => event.target.id !== "navbarSupportedContent" && setOpenOptions1(!openOptions1);
+        
+    
+
+
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" onClick={(e) => idClosser(e)}>
             
             <div className="container-fluid">
                 
@@ -42,7 +48,7 @@ const CustomNavBar = ( { routes } ) =>{
                     
                         <OptNavBar routes = {simpleOpts}/>
                         
-                        <li className="nav-item" onMouseOver={(e) => console.log(e.target.id)}>
+                        <li className="nav-item">
             
                             <b className="nav-link dropdown-toggle" role="button" 
                             id="navbarDropdown" data-bs-toggle="dropdown" 
@@ -52,8 +58,8 @@ const CustomNavBar = ( { routes } ) =>{
                                 
                             <ul className={`dropdown-menu ${openOptions1 ? "show" : ""}`} aria-labelledby="navbarDropdown" style={{textAlign:"center"}}>
                                 {complexOpts.filter(x => x.type !== "optionsContainer0").map((optx, idxe) =>
-                                    <li key={ idxe }>
-                                        <Link key={idxe} className="dropdown-item" to={optx.link} onClick={()=> setOpenOptions1(!openOptions1)}>{optx.name}</Link>    
+                                    <li key={ idxe } >
+                                        <Link key={idxe} className="dropdown-item" to={optx.link} onClick={()=> setOpenOptions1(!openOptions1)} id="navbarSupportedContent">{optx.name}</Link>    
                                     </li>
                                 )}
                             </ul>
@@ -66,9 +72,6 @@ const CustomNavBar = ( { routes } ) =>{
                         <input className="form-control me-2" 
                         type="search" placeholder="Search for ..." 
                         value={search} onChange={(e) => setSearch(e.target.value)}/>
-
-                        <span></span>
-
                    </div>
 
                 </div>
